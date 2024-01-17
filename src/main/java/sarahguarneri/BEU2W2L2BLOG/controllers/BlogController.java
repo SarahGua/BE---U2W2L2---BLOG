@@ -2,8 +2,8 @@ package sarahguarneri.BEU2W2L2BLOG.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sarahguarneri.BEU2W2L2BLOG.entities.Blog;
 import sarahguarneri.BEU2W2L2BLOG.services.BlogService;
+import sarahguarneri.BEU2W2L2BLOG.entities.Blog;
 
 import java.util.List;
 
