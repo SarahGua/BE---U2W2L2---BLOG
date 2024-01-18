@@ -3,7 +3,9 @@ package sarahguarneri.BEU2W2L2BLOG.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sarahguarneri.BEU2W2L2BLOG.DAO.BlogDAO;
+import sarahguarneri.BEU2W2L2BLOG.entities.Author;
 import sarahguarneri.BEU2W2L2BLOG.entities.Blog;
+import sarahguarneri.BEU2W2L2BLOG.payload.NewBlogPayload;
 
 import java.util.List;
 
@@ -13,6 +15,9 @@ public class BlogService {
     @Autowired
     private BlogDAO blogDAO;
 
+    @Autowired
+    private AuthorService authorService;
+
 //    public List<Blog> blogs = new ArrayList<>();
 
     public List<Blog> getBlogs(){
@@ -20,11 +25,18 @@ public class BlogService {
     }
 
     //metodo save
-    public Blog save(Blog body){
+    public Blog save(NewBlogPayload body){
+        Author found = authorService.findById(body.getBlogAuthorId());
+        Blog blogPost = new Blog();
+        blogPost.setCategoria(body.getCategoria());
+        blogPost.setContenuto(body.getContenuto());
+        blogPost.setTitolo(body.getTitolo());
+        blogPost.setCover(body.getCover());
+        blogPost.setMinutiLettura(body.getMinutiLettura());
 //        Random rndm = new Random();
 //        body.setId(rndm.nextInt(100, 1000));
 //        this.blogs.add(body);
-        return blogDAO.save(body);
+        return blogDAO.save(blogPost);
     }
 
     public Blog findByIdAndUpdate(int id, Blog body) {

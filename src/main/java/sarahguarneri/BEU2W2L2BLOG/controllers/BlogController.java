@@ -2,6 +2,7 @@ package sarahguarneri.BEU2W2L2BLOG.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sarahguarneri.BEU2W2L2BLOG.payload.NewBlogPayload;
 import sarahguarneri.BEU2W2L2BLOG.services.BlogService;
 import sarahguarneri.BEU2W2L2BLOG.entities.Blog;
 
@@ -28,7 +29,7 @@ public class BlogController {
 
     // 2. post --> http://localhost3001/blog (+ body)
     @PostMapping
-    public Blog saveBlog(@RequestBody Blog body){
+    public Blog saveBlog(@RequestBody NewBlogPayload body){
         return blogService.save(body);
     };
 
